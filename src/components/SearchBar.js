@@ -19,6 +19,7 @@ const SearchBar = () => {
         />
         </div>
         <button type="submit">Submit</button>
+        <p>{console.log('this is the place', place)}</p>
     </form>
 )};
 
