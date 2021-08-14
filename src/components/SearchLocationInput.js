@@ -28,7 +28,7 @@ function handleScriptLoad(updateQuery, autoCompleteRef) {
   );
   autoComplete.setFields(["place_id", "geometry", "name"]);
   autoComplete.addListener("place_changed", () =>
-    handlePlaceSelect(updateQuery)
+  handlePlaceSelect(updateQuery)
   );
 }
 
@@ -37,13 +37,27 @@ async function handlePlaceSelect(updateQuery) {
   const query = addressObject.formatted_address;
   updateQuery(query);
   console.log(addressObject);
-  console.log(addressObject.geometry.location.lat());
-  const addressToSave = {
+  const addressToSave = { 
       place_id: addressObject.place_id,
       name: addressObject.name,
       lat: addressObject.geometry.location.lat(),
       lng: addressObject.geometry.location.lng()
-  }
+    };
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+
+  axios
+  .post("http://localhost:5000/places", addressToSave)
+  .then((response) => {
+    console.log('response:', response);
+    console.log('response data:', response.data);
+  })
+  .catch((error) => {
+    console.log('error:', error);
+    console.log('error response:', error.response);
+  });
 }
 
 function SearchLocationInput() {
@@ -56,21 +70,6 @@ function SearchLocationInput() {
       () => handleScriptLoad(setQuery, autoCompleteRef)
     );
   }, []);
-
-//   handleSubmit = event => {
-//     event.preventDefault();
-
-//     axios
-//     .post("INSERT ABBYS LOCAL PATH", addressToSave)
-//     .then((response) => {
-//       console.log('response:', response);
-//       console.log('response data:', response.data);
-//     })
-//     .catch((error) => {
-//       console.log('error:', error);
-//       console.log('error response:', error.response);
-//     });
-// }
 
   return (
     <div className="search-location-input">
