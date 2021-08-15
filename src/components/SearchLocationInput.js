@@ -22,49 +22,48 @@ const loadScript = (url, callback) => {
   document.getElementsByTagName("head")[0].appendChild(script);
 };
 
-function handleScriptLoad(updateQuery, autoCompleteRef) {
-  autoComplete = new window.google.maps.places.Autocomplete(
-    autoCompleteRef.current,
-  );
-  autoComplete.setFields(["place_id", "geometry", "name"]);
-  autoComplete.addListener("place_changed", () =>
-  handlePlaceSelect(updateQuery)
-  );
-}
-
-async function handlePlaceSelect(updateQuery) {
-  const addressObject = autoComplete.getPlace();
-  const query = addressObject.formatted_address;
-  updateQuery(query);
-  console.log(addressObject);
-  const addressToSave = { 
-      place_id: addressObject.place_id,
-      name: addressObject.name,
-      lat: addressObject.geometry.location.lat(),
-      lng: addressObject.geometry.location.lng()
-    };
-}
-
-function handleSubmit(event) {
-  event.preventDefault();
-
-  axios
-  .post("http://localhost:5000/places", addressToSave)
-  .then((response) => {
-    console.log('response:', response);
-    console.log('response data:', response.data);
-  })
-  .catch((error) => {
-    console.log('error:', error);
-    console.log('error response:', error.response);
-  });
-}
-
 function SearchLocationInput() {
   const [query, setQuery] = useState("");
   const autoCompleteRef = useRef(null);
+  let [addressToSave, setaddressToSave] = useState({})
+  
+    const handleSubmit = (event) => {
+    event.preventDefault();
+  
+    axios
+    .post("http://localhost:5000/places", addressToSave)
+    .then((response) => {
+      console.log('response:', response);
+      console.log('response data:', response.data);
+    })
+    .catch((error) => {
+      console.log('error:', error);
+      console.log('error response:', error.response);
+    });
+  }
 
   useEffect(() => {
+    const handleScriptLoad = (updateQuery, autoCompleteRef) => {
+      autoComplete = new window.google.maps.places.Autocomplete(
+        autoCompleteRef.current,
+      );
+      autoComplete.setFields(["place_id", "geometry", "name"]);
+      autoComplete.addListener("place_changed", () =>
+      handlePlaceSelect(updateQuery)
+      );
+    }
+    const handlePlaceSelect = (updateQuery) => {
+      const addressObject = autoComplete.getPlace();
+      const query = addressObject.formatted_address;
+      updateQuery(query);
+      console.log(addressObject);
+      addressToSave = { 
+          place_id: addressObject.place_id,
+          name: addressObject.name,
+          lat: addressObject.geometry.location.lat(),
+          lng: addressObject.geometry.location.lng()
+        };
+    }
     loadScript(
       `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_API_KEY}&libraries=places`,
       () => handleScriptLoad(setQuery, autoCompleteRef)
@@ -79,7 +78,7 @@ function SearchLocationInput() {
         placeholder="where to?"
         value={query}
       />
-      <button type="wishlist" onClick="handleSubmit">wishlist</button>
+      <button type="wishlist" onClick={handleSubmit}>wishlist</button>
     </div>
   );
 }
