@@ -7,7 +7,7 @@ function App() {
     <div className="app">
       <header className="app-header">SAFAR
       </header>
-      <SearchLocationInput onChange={() => null} />
+      <SearchLocationInput onChange={console.log} />
     </div>
   );
 }
