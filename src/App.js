@@ -1,13 +1,15 @@
 import React from 'react';
 import SearchLocationInput from './components/SearchLocationInput';
+import Wishlist from './components/Wishlist';
+import CreateItineraryButton from './components/CreateItineraryButton';
 import './App.css';
 
 function App() {
   return (
     <div className="app">
-      <header className="app-header">SAFAR
-      </header>
-      <SearchLocationInput onChange={console.log} />
+      <SearchLocationInput onChange={console.log}/>
+      <Wishlist />
+      <CreateItineraryButton />
     </div>
   );
 }
