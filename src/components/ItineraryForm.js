@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function ItineraryForm() {
+function ItineraryForm(props) {
     const [places, setPlaces] = useState([]);
     const [checkedState, setCheckedState] = useState([]);
     const [itineraryName, setItineraryName] = useState("")
@@ -22,7 +22,7 @@ function ItineraryForm() {
             }
 
         event.preventDefault();
-        console.log(checkedState)
+        console.log(checkedState);
         axios
           .post("http://localhost:5000/itinerary/itinerary_with_places", 
           {itinerary_name: itineraryName,
@@ -35,6 +35,7 @@ function ItineraryForm() {
             console.log('error:', error);
             console.log('error response:', error.response);
           });
+          props.setMakeItin(false);
       }
 
     useEffect(() => {

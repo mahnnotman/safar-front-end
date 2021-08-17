@@ -9,15 +9,17 @@ import 'semantic-ui-css/semantic.min.css'
 import './App.css';
 
 function App() {
-  const [makeItin, setmakeItin] = useState(false);
+  const [makeItin, setMakeItin] = useState(false);
+  
   return (
     <div className="app">
       <header>SAFAR</header>
       <div className="content">
       <main>
         <SearchLocationInput onChange={console.log}/>
-        { !makeItin && <Button className="itinerary_button" circular type="button" onClick={ () => setmakeItin(true)}>create itinerary</Button>}
-        <ItineraryForm />
+        { !makeItin && <Button className="itinerary_button" circular type="button" 
+          onClick={ () => setMakeItin(true)}>create itinerary</Button>}
+        { makeItin && <ItineraryForm setMakeItin={setMakeItin} /> }
         <Itineraries />
       </main>
       <aside className="sidebar"><Wishlist /></aside>

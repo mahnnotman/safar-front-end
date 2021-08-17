@@ -12,12 +12,15 @@ function Wishlist() {
         );
     }, []);
     
+
+
     return (
         <ul> 
             {places.map(place => {
                 return (
                     <li key={place.name}>
-                        <header>{place.name}</header>
+                        <a href={`https://www.google.com/maps/search/?api=1&query=${place.lat}C${place.lng}&query_place_id=${place.google_place_id}`}>{place.name}</a>
+                        {console.log(place.place_id)}
                     </li>
                 )
             })}
