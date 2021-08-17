@@ -31,7 +31,7 @@ function SearchLocationInput() {
     event.preventDefault();
     console.log(addressToSave)
     axios
-      .post("https://safarcapstone.herokuapp.com/places", addressToSave)
+      .post("http://localhost:5000/places", addressToSave)
       .then((response) => {
         console.log('response:', response);
         console.log('response data:', response.data);

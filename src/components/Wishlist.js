@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Header, List } from 'semantic-ui-react';
 
 function Wishlist() {
     const [places, setPlaces] = useState([]);
 
     useEffect(() => {
-        fetch("https://safarcapstone.herokuapp.com/places").then(response => 
+        fetch("http://localhost:5000/places").then(response => 
             response.json().then(data => {
                 console.log(data)
                 setPlaces(data);
@@ -14,15 +13,15 @@ function Wishlist() {
     }, []);
     
     return (
-        <List> 
+        <ul> 
             {places.map(place => {
                 return (
-                    <List.Item key={place.name}>
-                        <Header>{place.name}</Header>
-                    </List.Item>
+                    <li key={place.name}>
+                        <header>{place.name}</header>
+                    </li>
                 )
             })}
-        </List>
+        </ul>
         )
 }
 

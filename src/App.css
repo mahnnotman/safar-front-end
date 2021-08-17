@@ -1,10 +1,30 @@
 .app {
-  min-height: 100vh;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.content {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: black;
-  padding-top: 12%;
+}
+
+.itinerary_button.itinerary_button {
+  text-transform: uppercase;
+}
+
+main {
+  width: 75%;
+  height: 100vh;
+  margin: 5px;
+  padding: 5px;
+  border: 2px solid red;
+}
+
+
+.sidebar {
+  width: 25%;
+  margin: 5px;
+  padding: 5px;
+  border: 2px solid green;
 }
 
 .search-location-input {

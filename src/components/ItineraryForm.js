@@ -24,7 +24,7 @@ function ItineraryForm() {
         event.preventDefault();
         console.log(checkedState)
         axios
-          .post("https://safarcapstone.herokuapp.com/itinerary/itinerary_with_places", 
+          .post("http://localhost:5000/itinerary/itinerary_with_places", 
           {itinerary_name: itineraryName,
             place_ids: placeIds})
           .then((response) => {
@@ -38,7 +38,7 @@ function ItineraryForm() {
       }
 
     useEffect(() => {
-        fetch("https://safarcapstone.herokuapp.com/places").then(response => 
+        fetch("http://localhost:5000/places").then(response => 
             response.json().then(data => {
                 console.log(data)
                 setPlaces(data);
