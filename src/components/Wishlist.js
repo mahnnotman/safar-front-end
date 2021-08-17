@@ -5,7 +5,7 @@ function Wishlist() {
     const [places, setPlaces] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/places").then(response => 
+        fetch("https://safarcapstone.herokuapp.com/places").then(response => 
             response.json().then(data => {
                 console.log(data)
                 setPlaces(data);
