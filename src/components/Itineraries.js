@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function Itineraries() {
+function Itineraries(props) {
     const [itineraries, setItineraries] = useState([]);
 
     useEffect(() => {
@@ -11,13 +11,15 @@ function Itineraries() {
             })
         );
     }, []);
-    
+
     return (
         <ul> 
             {itineraries.map(itinerary => {
                 return (
                     <li key={itinerary.itinerary_name}>
                         <header>{itinerary.itinerary_name}</header>
+                        <button onClick={() => {props.setViewItin(true);
+                            props.setId(itinerary.itinerary_id)}}>View</button>
                     </li>
                 )
             })}

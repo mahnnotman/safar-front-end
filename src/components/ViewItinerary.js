@@ -1,21 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
-function Wishlist() {
+function ViewItinerary(props) {
     const [places, setPlaces] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/places").then(response => 
+        fetch(`http://localhost:5000/itinerary/${props.id}/places`).then(response => 
             response.json().then(data => {
-                console.log(data)
-                setPlaces(data);
+                console.log("********", data);
+                setPlaces(data.places);
             })
         );
-    }, []);
-    
-
+    }, [props.id]);
 
     return (
-        <ul> 
+        <ol> 
             {places.map(place => {
                 return (
                     <li key={place.name}>
@@ -24,8 +22,8 @@ function Wishlist() {
                     </li>
                 )
             })}
-        </ul>
+        </ol>
         )
 }
 
-export default Wishlist;
+export default ViewItinerary;

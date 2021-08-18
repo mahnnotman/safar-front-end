@@ -56,7 +56,6 @@ function ItineraryForm(props) {
                         Itinerary Name: <input type="text" onChange={(event) => setItineraryName(event.target.value)}/>
                     </label>
                     <ul>
-                        {console.log(places)};
                         {places.map(({ name }, index) => {
                             console.log(name);
                         return (
@@ -73,7 +72,6 @@ function ItineraryForm(props) {
                                 />
                                 <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
                                 </div>
-                                <div className="right-section"></div>
                             </div>
                             </li>
                         );
