@@ -5,8 +5,8 @@ import Button from './components/Button';
 import ItineraryForm from './components/ItineraryForm';
 import Itineraries from './components/Itineraries';
 import ViewItinerary from './components/ViewItinerary';
-import 'normalize.css'
-import 'semantic-ui-css/semantic.min.css'
+import 'normalize.css';
+import 'semantic-ui-css/semantic.min.css';
 import './App.css';
 
 function App() {
@@ -29,7 +29,7 @@ function App() {
         { !makeItin && <Button className="itinerary_button" circular type="button" 
           onClick={ () => setMakeItin(true)}>create itinerary</Button>}
         { makeItin && <ItineraryForm setMakeItin={setMakeItin} /> }
-        { !viewItin && <Itineraries setViewItin={setViewItin} setId={setId} /> }
+        { !viewItin && <Itineraries className="wrapper" setViewItin={setViewItin} setId={setId} /> }
         { viewItin && <ViewItinerary setViewItin={setViewItin} id={id} places={places} setPlaces={setPlaces} />}
       </main>
       <aside className="sidebar"><Wishlist places={places} setPlaces={setPlaces}/></aside>

@@ -51,10 +51,10 @@ function ItineraryForm(props) {
     return (
         <form>
             <div>
-                <h3>What do you want to see?</h3>
                     <label>
                         Itinerary Name: <input type="text" onChange={(event) => setItineraryName(event.target.value)}/>
                     </label>
+                    <p>What do you want to see?</p>
                     <ul>
                         {places.map(({ name }, index) => {
                             console.log(name);

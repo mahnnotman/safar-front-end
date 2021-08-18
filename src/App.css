@@ -2,6 +2,10 @@
   max-width: 1280px;
   margin: 0 auto;
 }
+.container {
+  display: flex;
+  justify-content: center;
+}
 
 .content {
   display: flex;
@@ -9,6 +13,11 @@
 
 .itinerary_button.itinerary_button {
   text-transform: uppercase;
+  margin: 0% 50%;
+}
+
+ul {
+  list-style-type: none;
 }
 
 main {
@@ -16,45 +25,15 @@ main {
   height: 100vh;
   margin: 5px;
   padding: 5px;
-  border: 2px solid red;
 }
-
 
 .sidebar {
   width: 25%;
   margin: 5px;
   padding: 5px;
-  border: 2px solid green;
 }
 
-.search-location-input {
-  display: flex;
-  width: 484px;
-  border-radius: 24px;
-  border: 1px solid #d8d8d8;
-}
-
-.search-location-input:focus-within {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  border-color: rgba(223,225,229,0);
-  box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
-}
-
-.search-location-input:hover {
-  box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
-  border-color: rgba(223,225,229,0);
-}
-
-.search-location-input input {
-  height: 32px;
-  width: 100%;
-  padding: 8px 12px;
-  border: none;
-  font-size: 16px;
-  border-radius: 24px;
-}
-
-.search-location-input input:focus {
-  outline: none;
+body {
+  background-image: url('barca.JPG');
+  background-size: 100%;
 }

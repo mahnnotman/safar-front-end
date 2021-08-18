@@ -14,10 +14,10 @@ function ViewItinerary(props) {
 
     return (
         <div>
-            <ol> 
+            <ol className="container" > 
                 {places.map(place => {
                     return (
-                        <li key={place.name}>
+                        <li  key={place.name}>
                             <a href={`https://www.google.com/maps/search/?api=1&query=${place.lat}C${place.lng}&query_place_id=${place.google_place_id}`} target="_blank" rel="noreferrer">{place.name}</a>
                             {console.log(place.place_id)}
                         </li>

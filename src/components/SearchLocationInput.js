@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+import './SearchLocationInput.css';
 
 let autoComplete;
 
@@ -74,14 +75,14 @@ function SearchLocationInput(props) {
   }, []);
 
   return (
-    <div className="search-location-input">
+    <div className="search-location-input"> 
       <input
         ref={autoCompleteRef}
         onChange={event => setQuery(event.target.value)}
         placeholder="where to?"
         value={query}
       />
-      <button type="wishlist" onClick={handleSubmit}>wishlist</button>
+      <button type="submit" onClick={handleSubmit}>wishlist</button>
     </div>
   );
 }

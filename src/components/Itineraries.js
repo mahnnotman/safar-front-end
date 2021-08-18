@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './Itineraries.css'
 
 function Itineraries(props) {
     const [itineraries, setItineraries] = useState([]);
@@ -13,10 +14,10 @@ function Itineraries(props) {
     }, []);
 
     return (
-        <ul> 
+        <ul className="wrapper"> 
             {itineraries.map(itinerary => {
                 return (
-                    <li key={itinerary.itinerary_name}>
+                    <li className="container" key={itinerary.itinerary_name}>
                         <header>{itinerary.itinerary_name}</header>
                         <button onClick={() => {props.setViewItin(true);
                             props.setId(itinerary.itinerary_id)}}>View</button>
