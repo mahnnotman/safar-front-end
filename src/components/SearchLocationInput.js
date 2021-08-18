@@ -22,7 +22,7 @@ const loadScript = (url, callback) => {
   document.getElementsByTagName("head")[0].appendChild(script);
 };
 
-function SearchLocationInput() {
+function SearchLocationInput(props) {
   const [query, setQuery] = useState("");
   const autoCompleteRef = useRef(null);
   let [addressToSave, setaddressToSave] = useState({})
@@ -35,6 +35,8 @@ function SearchLocationInput() {
       .then((response) => {
         console.log('response:', response);
         console.log('response data:', response.data);
+        props.addPlace(response.data.place);
+        setQuery("")
       })
       .catch((error) => {
         console.log('error:', error);

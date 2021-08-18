@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function Wishlist() {
-    const [places, setPlaces] = useState([]);
+function Wishlist({places, setPlaces}) {
 
     useEffect(() => {
         fetch("http://localhost:5000/places").then(response => 
